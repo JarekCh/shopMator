@@ -5,7 +5,12 @@
 *{
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;    
+}
+
+body button,
+body div {
+    transition: all 0.3s ease-in-out;
 }
 
 body {
@@ -86,6 +91,9 @@ header {
 .categories-items {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
+    padding: 0px 10px;
+    justify-content: center;
 }
 
 .categories-items button {
@@ -94,8 +102,7 @@ header {
     background: none;
     border: none;
     cursor: pointer;
-    border-radius: 15px;
-    transition: all 0.3s ease-in-out;
+    border-radius: 15px;    
 }
 
 .categories-items button:hover{
@@ -106,4 +113,123 @@ header {
 .categories-items button.active {
     background-color: black;
     color: yellow;   
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 30px;
+}
+
+.product-item {
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 20px;    
+}
+
+.product-item:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
+
+}
+
+.product-item img{
+    width: 260px;
+}
+
+.product-name{
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.product-desctiption{
+   color: gray; 
+   font-size: 15px;
+   line-height: 22px;
+   width: 90%;
+}
+
+.product-price {
+    color: green;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.product-price .price-sale {
+    display: none;    
+}
+
+.product-item.on-sale .price{
+    color: black;
+    font-size: 13px;
+    position: relative;
+}
+.product-item.on-sale .price::before {
+    content: '';
+    position: absolute;
+    width: 110%;
+    height: 2px;
+    background: black;
+    top: 30%;
+    left: -5%;
+    transform: rotate(-10deg);
+}
+
+.product-item.on-sale .price-sale{
+    display: block;
+}
+
+.product-add-to-basket-btn {
+    background: black;
+    color: white;
+    width: 60%;
+    font-size: 20px;
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+}
+
+.product-add-to-basket-btn:hover {
+    color: yellow;
+}
+
+
+@media only screen and (min-width: 1300px) {
+    .container {
+        display: flex;
+    }
+    .categories-items {
+        flex-direction: column;
+    }
+    .categories {
+        margin:0;
+        
+        border-right: 2px solid rgb(228, 220, 220) ;  
+        min-width: 350px;      
+    }
+    .categories-items button{
+        padding: 10px 50px;
+        border-radius: 5px;
+    }
+    .categories-title{
+        background-color: yellow;
+        width: 100%;
+        text-align: center;
+        padding: 6px;
+    }
+    .products {
+        margin-left: 15px;
+        gap: 50px;
+    }
 }
