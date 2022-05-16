@@ -138,6 +138,7 @@ header {
 }
 
 .product-item-sale-info {
+    display: none;
     position: absolute;
     top: 0;
     right: 0;
@@ -146,6 +147,10 @@ header {
     padding: 5px 15px;
     border-radius: 5px;
     opacity: 0.8;
+}
+
+.product-item.on-sale .product-item-sale-info{
+    display: block;
 }
 
 .product-item:hover {
