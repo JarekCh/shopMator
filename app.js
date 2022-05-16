@@ -69,9 +69,26 @@ categoriesButtons.forEach(btn => btn.addEventListener('click', (e) => {
          currentProducts = currentProducts.filter((product) => 
             product.category === category
             );
-    };
-
-    console.log(currentProducts);
+    };    
 
     renderProducts(currentProducts);
 }));
+
+const searchBarInput = document.querySelector(".search-bar-input");
+
+searchBarInput.addEventListener('input', (e) => {
+    const search = e.target.value;
+
+    const foundProducts = currentProducts.filter((product) => {
+        if(product.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())) {
+            return product;
+        }
+    });
+
+    const emptyState = document.querySelector(".empty-state");
+
+    foundProducts.length === 0 ? emptyState.classList.add('active'):
+     emptyState.classList.remove('active');
+    renderProducts(foundProducts);
+});
+
