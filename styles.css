@@ -80,7 +80,7 @@ header {
     flex-direction: column;
     align-items: center;
     margin: 20px 0;
-    gap: 15px;
+    gap: 15px;    
 }
 
 .categories-title {
@@ -102,7 +102,8 @@ header {
     background: none;
     border: none;
     cursor: pointer;
-    border-radius: 15px;    
+    border-radius: 15px;
+    text-transform: capitalize;  
 }
 
 .categories-items button:hover{

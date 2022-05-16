@@ -1,6 +1,7 @@
 // app.js 
 
 const currentProducts = products;
+let categories = new Set();
 const productsSection = document.querySelector('.products');
 
 const renderProducts = (items) => {
@@ -27,4 +28,26 @@ const renderProducts = (items) => {
      
 };
 
+const renderCategories = (items) => {
+    for(let i = 0; i < items.length; i++){
+        categories.add(items[i].category);
+    }
+
+    const categoriesItems = document.querySelector(".categories-items");
+    categories = ["Wszystkie", ...categories];
+
+    categories.forEach((category, index) => {
+        const newCategory = document.createElement('button');
+        newCategory.innerHTML = category;
+        newCategory.dataset = category;
+
+        index === 0 ? newCategory.classList.add('active'): "";
+
+        categoriesItems.appendChild(newCategory);
+    });
+    
+};
+
 document.onload = renderProducts(currentProducts);
+document.onload = renderCategories(currentProducts);
+
