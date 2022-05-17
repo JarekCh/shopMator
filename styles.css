@@ -22,6 +22,9 @@ header {
    color: white; 
    display: flex;
    padding: 30px;
+   position: sticky;
+   top: 0;
+   z-index: 1;
 }
 
 .header-title {
@@ -74,6 +77,21 @@ header {
     font-weight: 500;
     gap: 5px;
 }
+
+.basket-clear-btn {
+    background: none;
+    color: yellow;
+    border: none;
+    align-self: start;
+    cursor: pointer;
+    display: none;
+}
+
+.basket-clear-btn.active{
+    display: block;
+}
+
+
 
 .categories {
     display: flex;

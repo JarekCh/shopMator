@@ -3,6 +3,28 @@
 let currentProducts = products;
 let categories = new Set();
 const productsSection = document.querySelector('.products');
+let basket = [];
+let addToBasketButtons;
+
+const addToBasket = (e) => {
+    const selectedID = parseInt(e.target.dataset.id);
+
+    const key = currentProducts.findIndex((product) => product.id === selectedID);
+    
+    basket.push(currentProducts.at(key));
+
+    const basketTotla = basket.reduce((sum, product) => {              
+        if(product.sale) {
+          return (sum += (product.price - product.saleAmount))
+        } else {
+            return (sum += product.price)
+        }
+    }, 0);  
+
+    basketClearBtn.classList.add("active") ;       
+    
+    basketAmountSpan.innerHTML = `${basketTotla.toFixed(2)} zł`;    
+}
 
 const renderProducts = (items) => {
     productsSection.innerHTML = "";
@@ -22,11 +44,14 @@ const renderProducts = (items) => {
             <span class="price">${items[i].price.toFixed(2)}</span>
             <span class="price-sale">${(items[i].price - items[i].saleAmount).toFixed(2)} zł</span>                    
         </div>
-        <button class="product-add-to-basket-btn">Dodaj Do koszyka</button>
+        <button data-id="${items[i].id}" class="product-add-to-basket-btn">Dodaj Do koszyka</button>
         <p class="product-item-sale-info">Promocja</p>`;
         productsSection.appendChild(newProduct);  
-    }
-     
+    } 
+    addToBasketButtons = document.querySelectorAll(".product-add-to-basket-btn");
+    addToBasketButtons.forEach((e) => {
+        e.addEventListener('click', addToBasket)
+    }) 
 };
 
 const renderCategories = (items) => {
@@ -87,8 +112,23 @@ searchBarInput.addEventListener('input', (e) => {
 
     const emptyState = document.querySelector(".empty-state");
 
-    foundProducts.length === 0 ? emptyState.classList.add('active'):
-     emptyState.classList.remove('active');
+    foundProducts.length === 0 
+        ? emptyState.classList.add('active')
+        : emptyState.classList.remove('active');
     renderProducts(foundProducts);
 });
+
+
+
+const basketClearBtn = document.querySelector(".basket-clear-btn");
+const basketAmountSpan = document.querySelector(".basket-amount");
+
+
+const clearBasket = () => {
+    basketAmountSpan.innerHTML = "Koszyk";
+    basket = [];  
+    basketClearBtn.classList.remove("active");  
+};
+
+basketClearBtn.addEventListener('click', clearBasket)
 
