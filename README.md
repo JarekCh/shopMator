@@ -1,16 +1,16 @@
 # shopMator
+
 "Online shop".
 Functionality:
- -search bar
- -filter by category
- -add item to basket
- -sum items in basket
 
-
-Made with tutorial from Mate Code YT channel.
+- search bar
+- filter by category
+- add item to basket
+- sum items in basket
 
 ## Technologies
-- CSS 
+
+- CSS
 - HTML
 - js
 
